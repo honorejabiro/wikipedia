@@ -1,0 +1,29 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block form %}
+    <form action="{% url 'search'  %}" method="POST">
+        {% csrf_token %}
+        <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+    </form>
+{% endblock %}
+
+{% block body %}
+    <h1>New Page</h1>
+
+    <form action="{% url 'new_page' %}" method="POST">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="q" placeholder="Enter title">
+        <br>
+        <label>Enter entrie's content:</label>
+        <br>
+        <textarea name="text">Be sure to data in markdown form.</textarea>
+        <br>
+        <input type="submit" value="save">
+
+    </form>
+{% endblock %}

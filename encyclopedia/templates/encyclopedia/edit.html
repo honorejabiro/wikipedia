@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block form %}
+    <form action="{% url 'search'  %}" method="POST">
+        {% csrf_token %}
+        <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+    </form>
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Page</h1>
+
+    <form action="{% url 'name'  name=name %}" method="POST">
+        {% csrf_token %}
+        <label>Enter entrie's content:</label>
+        <br>
+        <textarea name="text">{{ content }}</textarea>
+        <br>
+        <input type="submit" value="save">
+        <input type="hidden" name="title" value="{{name}}">
+
+    </form>
+{% endblock %}

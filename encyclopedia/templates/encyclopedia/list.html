@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block form %}
+    <form action="{% url 'search'  %}" method="POST">
+        {% csrf_token %}
+        <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+    </form>
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    <ul>
+        {% for list in lists %}
+            <li><a href="{% url 'name' name=list %}">{{ list }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
